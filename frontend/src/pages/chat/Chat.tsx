@@ -9,7 +9,7 @@ import uuid from 'react-uuid';
 
 import styles from "./Chat.module.css";
 import Azure from "../../assets/test_img.png";
-
+import Dropdown from "./Dropdown";
 import {
     ChatMessage,
     ConversationRequest,
@@ -588,7 +588,7 @@ const Chat = () => {
                                 <div ref={chatMessageStreamEnd} />
                             </div>
                         )}
-
+                        <Dropdown />
                         <Stack horizontal className={styles.chatInput}>
                             {isLoading && (
                                 <Stack 

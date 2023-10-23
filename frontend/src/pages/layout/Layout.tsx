@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { HistoryButton, ShareButton } from "../../components/common/Button";
 import { AppStateContext } from "../../state/AppProvider";
 import { CosmosDBStatus } from "../../api";
-import Select from 'react-select';
+// import Select from 'react-select';
 
 
 const shareButtonStyles: ICommandBarStyles & IButtonStyles = {
@@ -35,12 +35,12 @@ const shareButtonStyles: ICommandBarStyles & IButtonStyles = {
     },
   };
   {/* changed */}
-  const options = [
-    { value: 'api-test-001', label: 'api-test-001' },
-    { value: 'idx-wipit', label: 'idx-wipit' },
-    { value: 'jman-index-logistics', label: 'jman-index-logistics' },
-    { value: 'hr-resource', label: 'hr-resource' }
-  ]
+//   const options = [
+//     { value: 'api-test-001', label: 'api-test-001' },
+//     { value: 'idx-wipit', label: 'idx-wipit' },
+//     { value: 'jman-index-logistics', label: 'jman-index-logistics' },
+//     { value: 'hr-resource', label: 'hr-resource' }
+//   ]
   {/* changed */}
 const Layout = () => {
 
@@ -50,7 +50,7 @@ const Layout = () => {
     const [copyText, setCopyText] = useState<string>("Copy URL");
     const appStateContext = useContext(AppStateContext)
     
-    const [selectedSearchIndex, setSelectedSearchIndex] = useState(options[0].value);
+    // const [selectedSearchIndex, setSelectedSearchIndex] = useState(options[0].value);
 
     const handleShareClick = () => {
         setIsSharePanelOpen(true);
@@ -79,24 +79,24 @@ const Layout = () => {
 
     useEffect(() => {}, [appStateContext?.state.isCosmosDBAvailable.status]);
  {/* changed */}
-    const handleDropdownChange = (selectedOption:any) => {
-        // Send a POST request to update the search index
-        setSelectedSearchIndex(selectedOption.value);
-        fetch("/update-search-index", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ index: selectedOption.value }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data.message);
-            })
-            .catch((error) => {
-                console.error("Error updating search index:", error);
-            });
-    };
+    // const handleDropdownChange = (selectedOption:any) => {
+    //     // Send a POST request to update the search index
+    //     setSelectedSearchIndex(selectedOption.value);
+    //     fetch("/update-search-index", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ index: selectedOption.value }),
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             console.log(data.message);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error updating search index:", error);
+    //         });
+    // };
      {/* changed */}
 
     return (
@@ -112,18 +112,19 @@ const Layout = () => {
                             aria-hidden="true"
                         />
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <p className={styles.headerTitle}>.</p>
+                            <p className={styles.headerTitle}>&nbsp;</p>
                         </Link>
         
                     </Stack>
                     <Stack className={styles.ButtonsContainer} horizontal tokens={{ childrenGap: 4 }}>
                             {/* changed */}
-                            <p className={styles.dropdownlabel}>Select a knowledge base:</p>
-                            <Select
+                            {/* <p className={styles.dropdownlabel}>Select a knowledge base:</p> */}
+                            {/* <Select
                             className={styles.dropdown}
                             options={options}
                             onChange={handleDropdownChange} 
-                            />
+                            placeholder="select a knowledge base"
+                            /> */}
 
                             {/* changed */}
                             {(appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured) && 

@@ -3,7 +3,7 @@ import { Stack, TextField } from "@fluentui/react";
 import { SendRegular } from "@fluentui/react-icons";
 import Send from "../../assets/Send.svg";
 import styles from "./QuestionInput.module.css";
-
+import Dropdown from "../../pages/chat/Dropdown";
 interface Props {
     onSend: (question: string, id?: string) => void;
     disabled: boolean;
@@ -45,6 +45,8 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, conv
     const sendQuestionDisabled = disabled || !question.trim();
 
     return (
+        <>
+        <Dropdown/>
         <Stack horizontal className={styles.questionInputContainer}>
             <TextField
                 className={styles.questionInputTextArea}
@@ -71,5 +73,6 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, conv
             </div>
             <div className={styles.questionInputBottomBorder} />
         </Stack>
+    </>
     );
 };
